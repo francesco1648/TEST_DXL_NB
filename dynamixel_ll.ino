@@ -105,12 +105,12 @@ void setup() {
 
 
   // Set Operating Mode for each motor:
-  dxl.setOperatingMode(3); // Extended Position Mode
-  mot_2.setOperatingMode(3);
-  mot_3.setOperatingMode(3);
-  mot_4.setOperatingMode(3);
-  mot_5.setOperatingMode(3);
-  mot_6.setOperatingMode(3);
+  dxl.setOperatingMode(4); // Extended Position Mode
+  mot_2.setOperatingMode(4);
+  mot_3.setOperatingMode(4);
+  mot_4.setOperatingMode(4);
+  mot_5.setOperatingMode(4);
+  mot_6.setOperatingMode(4);
 
   // Set Homing Offset for each motor:
   //dxl.setHomingOffset(homingOffset);
@@ -154,12 +154,15 @@ mot_6.setProfileAcceleration(ProfileAcceleration);
 
 getpositions0[0] = 1780; // Initialize positions to 0
 getpositions0[1] = 2957; // Initialize positions to 0
-dxl.setHomingOffset(getpositions); // Set homing offset to 0 for all motors
+
+/*getpositions0[0] = 1780; // Initialize positions to 0
+getpositions0[1] = 2957; // Initialize positions to 0
+ dxl.setHomingOffset(getpositions); // Set homing offset to 0 for all motors
   mot_2.setHomingOffset(2122);
   mot_3.setHomingOffset(-1951);
   mot_4.setHomingOffset(1159);
   mot_5.setHomingOffset(5164);
-  mot_6.setHomingOffset(-1098);
+  mot_6.setHomingOffset(-1098);*/
 
   // Enable torque for all motors.
   dxl.setTorqueEnable(true);
@@ -180,12 +183,12 @@ dxl.setHomingOffset(getpositions); // Set homing offset to 0 for all motors
 }
 
 void loop() {
-dxl.setGoalPosition_EPCM(getpositions); // Set goal position for both motors
-mot_2.setGoalPosition_EPCM(pos_mot_2); // Set goal position for motor 2
-mot_3.setGoalPosition_EPCM(pos_mot_3); // Set goal position for motor 3
-mot_4.setGoalPosition_EPCM(pos_mot_4); // Set goal position for motor 4
-mot_5.setGoalPosition_EPCM(pos_mot_5); // Set goal position for motor 5
-mot_6.setGoalPosition_EPCM(pos_mot_6); // Set goal position for motor 6
+dxl.setGoalPosition_EPCM(getpositions0); // Set goal position for both motors
+mot_2.setGoalPosition_EPCM(2122); // Set goal position for motor 2
+mot_3.setGoalPosition_EPCM(-1951); // Set goal position for motor 3
+mot_4.setGoalPosition_EPCM(1159); // Set goal position for motor 4
+mot_5.setGoalPosition_EPCM(5164); // Set goal position for motor 5
+mot_6.setGoalPosition_EPCM(-1098); // Set goal position for motor 6
 
 
   dxl.getPresentPosition(getpositions);
