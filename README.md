@@ -1,8 +1,10 @@
-# To-Do List per i dxl
+# To-Do List per i DXL
 
-## prova sulle nuove schede di funzioni come 
--[] set dei vari parametri come velocità e torqueEnable
--[] funzione getposition attuale di tutti i motori
--[] funzione di setHomingOffset
--[] funzione extendedPositionControl
+## Prova sulle nuove schede di funzioni
+
+- [ ] Set dei vari parametri come velocità e `torqueEnable`
+- [ ] Funzione `getPosition` attuale di tutti i motori
+- [ ] Funzione di `setHomingOffset`
+- [ ] Funzione `extendedPositionControl`
+
 
