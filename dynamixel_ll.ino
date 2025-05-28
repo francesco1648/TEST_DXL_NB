@@ -21,6 +21,7 @@ int32_t pos_mot_3 = 0;
 int32_t pos_mot_4 = 0;
 int32_t pos_mot_5 = 0;
 int32_t pos_mot_6 = 0;
+int32_t getpositions0[2] = {0, 0}; // Initialize positions to 0
 
 // Create individual motor objects for setup (if needed for individual writes).
 DynamixelLL mot_Left_1(Serial1, motorIDs[0]);
@@ -122,7 +123,18 @@ void setup() {
   mot_5.setTorqueEnable(true);
   mot_6.setTorqueEnable(true);
  */
-delay(10);
+/*
+mot1a 1780  mot1b 2957
+mot2 2122
+mot3 -1951
+mot4 1159
+mot5 5164
+mot6 -1098
+*/
+
+
+
+  delay(10);
   // Set Profile Velocity and Profile Acceleration for smooth motion.
 mot_Left_1.setProfileVelocity(ProfileVelocity);
 mot_Left_1.setProfileAcceleration(ProfileAcceleration);
@@ -139,12 +151,43 @@ mot_5.setProfileAcceleration(ProfileAcceleration);
 mot_6.setProfileVelocity(ProfileVelocity);
 mot_6.setProfileAcceleration(ProfileAcceleration);
 
+
+getpositions0[0] = 1780; // Initialize positions to 0
+getpositions0[1] = 2957; // Initialize positions to 0
+dxl.setHomingOffset(getpositions); // Set homing offset to 0 for all motors
+  mot_2.setHomingOffset(2122);
+  mot_3.setHomingOffset(-1951);
+  mot_4.setHomingOffset(1159);
+  mot_5.setHomingOffset(5164);
+  mot_6.setHomingOffset(-1098);
+
+  // Enable torque for all motors.
+  dxl.setTorqueEnable(true);
+  mot_Left_1.setTorqueEnable(true);
+  mot_Right_1.setTorqueEnable(true);
+  mot_2.setTorqueEnable(true);
+  mot_3.setTorqueEnable(true);
+  mot_4.setTorqueEnable(true);
+  mot_5.setTorqueEnable(true);
+  mot_6.setTorqueEnable(true);
+
+
+
+
   Serial.print("\nThe motors are initialised.");
 
   delay(2000);
 }
 
 void loop() {
+dxl.setGoalPosition_EPCM(getpositions); // Set goal position for both motors
+mot_2.setGoalPosition_EPCM(pos_mot_2); // Set goal position for motor 2
+mot_3.setGoalPosition_EPCM(pos_mot_3); // Set goal position for motor 3
+mot_4.setGoalPosition_EPCM(pos_mot_4); // Set goal position for motor 4
+mot_5.setGoalPosition_EPCM(pos_mot_5); // Set goal position for motor 5
+mot_6.setGoalPosition_EPCM(pos_mot_6); // Set goal position for motor 6
+
+
   dxl.getPresentPosition(getpositions);
   Serial.print(" first motor: \t");
   Serial.print(getpositions[0]);
