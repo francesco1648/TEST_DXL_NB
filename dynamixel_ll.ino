@@ -183,16 +183,19 @@ getpositions0[1] = 2957; // Initialize positions to 0
 }
 
 void loop() {
+  getpositions0[0] = 1766 ; // Initialize positions to 0
+  getpositions0[1] = 2763; // Initialize positions to 0
+
 dxl.setGoalPosition_EPCM(getpositions0); // Set goal position for both motors
-mot_2.setGoalPosition_EPCM(2122); // Set goal position for motor 2
-mot_3.setGoalPosition_EPCM(-1951); // Set goal position for motor 3
-mot_4.setGoalPosition_EPCM(1159); // Set goal position for motor 4
-mot_5.setGoalPosition_EPCM(5164); // Set goal position for motor 5
-mot_6.setGoalPosition_EPCM(-1098); // Set goal position for motor 6
+mot_2.setGoalPosition_EPCM(4524); // Set goal position for motor 2
+mot_3.setGoalPosition_EPCM(-52); // Set goal position for motor 3
+mot_4.setGoalPosition_EPCM(3255); // Set goal position for motor 4
+mot_5.setGoalPosition_EPCM(7308); // Set goal position for motor 5
+mot_6.setGoalPosition_EPCM(-915); // Set goal position for motor 6
 
 
   dxl.getPresentPosition(getpositions);
-  Serial.print(" first motor: \t");
+  Serial.print(" first motor098: \t");
   Serial.print(getpositions[0]);
   Serial.print(" second motor: \t");
   Serial.println(getpositions[1]);
